@@ -11,6 +11,10 @@
 		87B4CC362CCA06CF000D609F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4CC352CCA06CF000D609F /* ContentView.swift */; };
 		87B4CC382CCA06D0000D609F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B4CC372CCA06D0000D609F /* Assets.xcassets */; };
 		87B4CC3B2CCA06D0000D609F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B4CC3A2CCA06D0000D609F /* Preview Assets.xcassets */; };
+		87B4CC422CCA074C000D609F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4CC412CCA074C000D609F /* Activity.swift */; };
+		87B4CC442CCA0819000D609F /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4CC432CCA0819000D609F /* Activities.swift */; };
+		87B4CC482CCB236E000D609F /* AddActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4CC472CCB236E000D609F /* AddActivity.swift */; };
+		87B4CC4A2CCB4B75000D609F /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4CC492CCB4B75000D609F /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		87B4CC352CCA06CF000D609F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87B4CC372CCA06D0000D609F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B4CC3A2CCA06D0000D609F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		87B4CC412CCA074C000D609F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		87B4CC432CCA0819000D609F /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
+		87B4CC472CCB236E000D609F /* AddActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivity.swift; sourceTree = "<group>"; };
+		87B4CC492CCB4B75000D609F /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 			children = (
 				87B4CC332CCA06CF000D609F /* HabitTrackerApp.swift */,
 				87B4CC352CCA06CF000D609F /* ContentView.swift */,
+				87B4CC492CCB4B75000D609F /* ActivityView.swift */,
+				87B4CC472CCB236E000D609F /* AddActivity.swift */,
+				87B4CC412CCA074C000D609F /* Activity.swift */,
+				87B4CC432CCA0819000D609F /* Activities.swift */,
 				87B4CC372CCA06D0000D609F /* Assets.xcassets */,
 				87B4CC392CCA06D0000D609F /* Preview Content */,
 			);
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B4CC442CCA0819000D609F /* Activities.swift in Sources */,
+				87B4CC422CCA074C000D609F /* Activity.swift in Sources */,
+				87B4CC482CCB236E000D609F /* AddActivity.swift in Sources */,
 				87B4CC362CCA06CF000D609F /* ContentView.swift in Sources */,
 				87B4CC342CCA06CF000D609F /* HabitTrackerApp.swift in Sources */,
+				87B4CC4A2CCB4B75000D609F /* ActivityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
