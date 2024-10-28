@@ -11,20 +11,22 @@ struct ActivityView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var activity: Activity
-    var activities = Activities()
+    @State var activities = Activities()
+    @State var actualeDate = Date.now
     
     
     var body: some View {
         Text("\(activity.name)")
         Text("\(activity.description)")
         Text("\(activity.counter)")
+        Text(activity.formattedLastActiveDate)
 
         Button("Save") {
             if let indexNum = activities.items.firstIndex(of: activity) {
                 var newActivity = activity
                 newActivity.counter += 1
+                newActivity.lastActive = actualeDate
                 activities.items[indexNum] = newActivity
-                print(activities.items)
                 dismiss()
             }
            

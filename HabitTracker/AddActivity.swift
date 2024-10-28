@@ -4,7 +4,7 @@
 //
 //  Created by Mój Maczek on 25/10/2024.
 //
-
+import Foundation
 import SwiftUI
 
 struct AddActivity: View {
@@ -20,7 +20,7 @@ struct AddActivity: View {
             TextField("Add new", text: $activityName)
             TextField("Put some description", text: $activityDescription)
             Button("Save") {
-                let item = Activity(name: activityName, description: activityDescription, counter: 0)
+                let item = Activity(name: activityName, description: activityDescription, counter: 0, lastActive: Date.now)
                 activities.items.append(item)
                 dismiss()
             }

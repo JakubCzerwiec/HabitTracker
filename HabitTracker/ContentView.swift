@@ -12,6 +12,11 @@ struct Activity: Identifiable, Codable, Equatable, Hashable {
     let name: String
     let description: String
     var counter: Int
+    var lastActive: Date?
+    
+    var formattedLastActiveDate: String {
+        lastActive?.formatted(date: .abbreviated, time: .standard) ?? "It's my first time."
+    }
 }
 
 @Observable
@@ -43,9 +48,8 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(activities.items) { activity in
-                    //  Text(item.name)
                     NavigationLink {
-                        ActivityView(activity: activity)
+                        ActivityView(activity: activity, activities: activities)
                     } label: {
                         Text(activity.name)
                         Text("\(activity.counter)")
@@ -60,6 +64,9 @@ struct ContentView: View {
                     AddActivity(activities: activities)
                 }
             }
+        }
+        Button("me") {
+            print(activities.items)
         }
     }
     
