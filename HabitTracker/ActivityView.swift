@@ -16,21 +16,49 @@ struct ActivityView: View {
     
     
     var body: some View {
-        Text("\(activity.name)")
-        Text("\(activity.description)")
-        Text("\(activity.counter)")
-        Text(activity.formattedLastActiveDate)
-
-        Button("Save") {
-            if let indexNum = activities.items.firstIndex(of: activity) {
-                var newActivity = activity
-                newActivity.counter += 1
-                newActivity.lastActive = actualeDate
-                activities.items[indexNum] = newActivity
-                dismiss()
+        VStack {
+            Spacer()
+            VStack {
+                Text("\(activity.name)")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("\(activity.description)")
+                Text("You practiced: \(activity.counter) times")
+                Spacer()
+                if activity.counter == 0 {
+                    Text("It's the first time!")
+                } else {
+                    Text("Last time: \n\(activity.formattedLastActiveDate)")
+                }
             }
-           
+            .frame(height: 300)
+            .padding()
+            Spacer()
+            Button("Submit new practice") {
+                if let indexNum = activities.items.firstIndex(of: activity) {
+                    var newActivity = activity
+                    newActivity.counter += 1
+                    newActivity.lastActive = actualeDate
+                    activities.items[indexNum] = newActivity
+                    dismiss()
+                }
+                
+            }
         }
+        .padding()
+        .fontWeight(.bold)
+        .frame(maxWidth: .infinity)
+        .background(.darkMagenta)
+        .preferredColorScheme(.dark)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+                .foregroundColor(.red)
+            }
+        }
+        .navigationBarBackButtonHidden()
     }
 }
 

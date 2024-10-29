@@ -7,39 +7,6 @@
 import Foundation
 import SwiftUI
 
-struct Activity: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
-    let name: String
-    let description: String
-    var counter: Int
-    var lastActive: Date?
-    
-    var formattedLastActiveDate: String {
-        lastActive?.formatted(date: .abbreviated, time: .standard) ?? "It's my first time."
-    }
-}
-
-@Observable
-class Activities {
-    var items = [Activity]() {
-        didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Items")
-            }
-        }
-    }
-    init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
-            if let decodedItems = try? JSONDecoder().decode([Activity].self, from: savedItems) {
-                items = decodedItems
-                return
-            }
-        }
-        items = []
-    }
-}
-
-
 struct ContentView: View {
     @State private var activities = Activities()
     @State private var showingAddActivity = false
@@ -51,23 +18,48 @@ struct ContentView: View {
                     NavigationLink {
                         ActivityView(activity: activity, activities: activities)
                     } label: {
-                        Text(activity.name)
-                        Text("\(activity.counter)")
+                        VStack {
+                            Text(activity.name)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            if activity.counter == 0 {
+                                Text("It will be the first time!")
+                            } else {
+                                Text("Last practice: \n\(activity.formattedLastActiveDate)")
+                            }
+                        }
                     }
+                    
+                    .listRowSeparator(.hidden)
+                    .padding(.horizontal)
+                    
                 }
                 .onDelete(perform: deletItems)
-
-                Button("Add new Activity") {
-                    showingAddActivity = true
-                }
-                .sheet(isPresented: $showingAddActivity) {
-                    AddActivity(activities: activities)
+                .foregroundColor(.white)
+                .background(.darkMagenta)
+                .listRowBackground(Color.darkMagenta)
+            }
+            
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button() {
+                        showingAddActivity = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.title)
+                    }
                 }
             }
+
+            .sheet(isPresented: $showingAddActivity) {
+                AddActivity(activities: activities)
+            }
+            .navigationTitle("HabitTracker")
+            .listStyle(.plain)
+            .background(.darkMagenta)
+            .preferredColorScheme(.dark)
         }
-        Button("me") {
-            print(activities.items)
-        }
+
     }
     
     func deletItems(at offsets: IndexSet) {
